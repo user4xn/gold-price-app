@@ -13,7 +13,7 @@ class TransactionController extends Controller
     public function add()
     {
         $product = Product::all();
-        return view('page.transaction.guest', compact('product'));
+        return view('pages.transaction.guest', compact('product'));
     }
 
     public function cart(Request $request)
