@@ -13,16 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('gold_rates', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('transaction_date');
-            $table->string('buyer_name');
-            $table->string('buyer_email');
-            $table->string('buyer_phone');
-            $table->string('buyer_address');
-            $table->text('gold_price');
-            $table->text('gold_json');
-            $table->string('grand_total');
+            $table->enum('carat',['5K','6K','8K','10K','12K','13K','14K','18K','21K','22K','23K','24K']);
+            $table->string('rate');
             $table->timestamps();
         });
     }
@@ -34,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('gold_rates');
     }
 };

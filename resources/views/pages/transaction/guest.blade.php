@@ -6,11 +6,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
     <meta name="description" content="" />
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Transaction - Guest</title>
     
-    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/e-ArsipDigital-Ori.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
@@ -27,190 +25,88 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/formvalidation/dist/css/formValidation.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/page-auth.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.css') }}" />
-
-    <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
-    <script src="{{ asset('assets/vendor/js/template-customizer.js') }}"></script>
-    <script src="{{ asset('assets/js/config.js') }}"></script>
 </head>
 
 <body>
     <div class="authentication-wrapper authentication-cover authentication-bg">
-        <div class="authentication-inner row">
-            <div class="d-flex col-12 col-lg-12 justify-content-center flex-row align-items-center">
+        <div class="authentication-inner row m-0">
+            <div class="sticky-top card py-4 d-flex col-12 col-lg-12 justify-content-between flex-row align-items-center px-5">
               <span>
-                <img style="height: 50px; width:50px" src="https://icons.iconarchive.com/icons/cjdowner/cryptocurrency-flat/512/Ethereum-ETH-icon.png" alt="logo_image">
+                <img style="height: 50px; width:50px" src="https://www.emas-nu.com/ibank-v2/img/logo_emas_nu_landscape.webp" alt="logo_image">
               </span>
-              <span class="app-brand-text demo menu-text fw-bolder" style="font-size: 17px!important;  font-family: 'Montserrat', sans-serif!important;">Gold Price</span>
+              <span class="demo menu-text fw-bolder ms-2 me-auto" style="font-size: 17px!important;  font-family: 'Montserrat', sans-serif!important;">Tukang Emas</span>
+              <div class="w-50 text-end d-none d-md-block">
+                Temukan Kekilauan Emas Berkualitas, Pesanan Kustom yang Sesuai Kebutuhan!
+              </div>
             </div>
             <div class="d-flex col-12 col-lg-12 p-sm-5 p-4">
-                <div class="mx-auto">
-                  
-                  <div class="bs-stepper wizard-numbered mt-2">
-                    <div class="bs-stepper-header">
-                      <div class="step" data-target="#account-details">
-                        <button type="button" class="step-trigger">
-                          <span class="bs-stepper-circle">1</span>
-                          <span class="bs-stepper-label">
-                            <span class="bs-stepper-title">Info Personal</span>
-                            <span class="bs-stepper-subtitle">Isi Data Diri </span>
-                          </span>
-                        </button>
-                      </div>
-                      <div class="line">
-                        <i class="ti ti-chevron-right"></i>
-                      </div>
-                      <div class="step" data-target="#personal-info">
-                        <button type="button" class="step-trigger">
-                          <span class="bs-stepper-circle">2</span>
-                          <span class="bs-stepper-label">
-                            <span class="bs-stepper-title">Produk</span>
-                            <span class="bs-stepper-subtitle">Pilih Produk</span>
-                          </span>
-                        </button>
-                      </div>
-                      <div class="line">
-                        <i class="ti ti-chevron-right"></i>
-                      </div>
-                      <div class="step" data-target="#social-links">
-                        <button type="button" class="step-trigger">
-                          <span class="bs-stepper-circle">3</span>
-                          <span class="bs-stepper-label">
-                            <span class="bs-stepper-title">Hitung Harga</span>
-                            <span class="bs-stepper-subtitle">Berdasar harga pasar</span>
-                          </span>
-                        </button>
-                      </div>
-                    </div>
-                  
-                    <div class="bs-stepper-content">
-                      <form onSubmit="return false">
-                        <!-- Account Details -->
-                        <div id="account-details" class="content">
-                          <div class="row g-3">
-                            <div class="col-md-12">
-                              <label class="form-label" for="buyerName">Nama</label>
-                              <input type="text" id="buyerName" name="buyerName" class="form-control" placeholder="Nama..." required/>
-                            </div>
-                            <div class="col-md-6">
-                              <label class="form-label" for="buyerEmail">Email</label>
-                              <input type="email" id="buyerEmail" name="buyerEmail" class="form-control" placeholder="Email..." required/>
-                            </div>
-                            <div class="col-md-6">
-                              <label class="form-label" for="buyerPhone">Nomor Telepon</label>
-                              <input type="text" id="buyerPhone" name="buyerPhone" class="form-control" placeholder="Nomor Telepon..." required/>
-                            </div>
-                            <div class="col-md-12">
-                              <label class="form-label" for="buyerAddress">Alamat</label>
-                              <textarea name="buyerAddress" id="buyerAddress" class="form-control" cols="30" rows="10" placeholder="Alamat..."></textarea>
-                            </div>
-                            <div class="col-12 d-flex justify-content-between">
-                              <button class="btn btn-label-secondary btn-prev" disabled> <i class="ti ti-arrow-left me-sm-1 me-0"></i>
-                                <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                              </button>
-                              <button class="btn btn-primary btn-next"> <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0">Next</span> <i class="ti ti-arrow-right"></i></button>
-                            </div>
-                          </div>
+                <div class="mx-auto row d-flex justify-content-center w-100">
+                  <form action="/" class="w-75 mb-3">
+                    <input type="text" name="search" value="{{ $search }}" class="form-control rounded-pill" placeholder="Cari...">
+                  </form> 
+                  <div class="ps-4 ms-2 mb-3">
+                    @if($search)
+                    Menampilkan hasil pencarian <span class="border-bottom border-primary">{{ $search }}</span>, <a href="{{route('guest')}}">Reset</a>
+                    @endif
+                  </div>
+                  <div class="row mx-n2 mx-sm-n3">
+                    <a href="{{ route('custom-order') }}" class="col-6 col-xl-2 col-lg-3 col-md-4 px-2 px-sm-3 mb-3 mb-sm-5" id="customOrderButton">
+                      <!-- Product -->
+                      <div class="card text-center h-100 border border-5 border-primary d-flex justify-content-center bg-none" style="border-style: dashed !important; transition: background-color 0.3s; min-height:371px">
+                        <div id="text" class="fw-bold">
+                          CUSTOM ORDER
                         </div>
-                  
-                        <div id="personal-info" class="content">
-                          <div class="row g-3">
-                            <div class="col-md-12">
-                              <!-- Shopping bag -->
-                              <h5>Produk Dipilih (<span id="countCart">0</span>)</h5>
-                              <ul class="list-group mb-3" style="max-height: 400px; overflow-y:scroll">
-                                @foreach ($product as $item)
-                                <li class="list-group-item p-4">
-                                  <div class="d-flex gap-3">
-                                    <div class="flex-shrink-0 d-flex align-items-center">
-                                      <img class="rounded" style="height: 150px; width:150px; object-fit:cover" src="{{ $item->product_images }}" alt="{{ $item->product_name }}" class="w-px-100">
-                                    </div>
-                                    <div class="flex-grow-1">
-                                      <div class="row">
-                                        <div class="col-md-8">
-                                          <p class="me-3">
-                                            <a href="javascript:void(0)" class="text-body">{{ $item->product_name }}</a>
-                                          </p>
-                                          <div class="text-muted mb-2 d-flex flex-wrap">
-                                            <span class="me-1">Oleh:</span>
-                                            <a href="javascript:void(0)" class="me-3">GoldPrice</a>
-                                            <span class="badge bg-label-success">In Stock</span>
-                                          </div>
-                                          <input type="number" id="{{ $item->id.'-qty' }}" class="form-control form-control-sm w-px-75" value="1" min="1">
-                                        </div>
-                                        <div class="col-md-4">
-                                          <div class="text-md-end">
-                                            <div class="mb-md-4 mb-md-5 mt-0">
-                                              <span class="text-primary">{{ $item->product_weight }}({{ $item->product_unit }})</span>
-                                            </div>
-                                            <!-- Inside the loop -->
-                                            <button type="button" data-product-id="{{ $item->id }}" class="btn btn-sm btn-label-secondary waves-effect add-to-cart-btn">
-                                              Tambah
-                                            </button>
-                                            <button type="button" data-product-id="{{ $item->id }}" class="btn btn-sm btn-label-success waves-effect cancel-add-to-cart-btn d-none">
-                                              Ditambahkan
-                                            </button>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </li>
-                                @endforeach
-                              </ul>
-                            </div>
+                      </div>
+                      <!-- End Product -->
+                    </a>  
+                    @foreach ($product as $item)
+                    <!-- Products -->
+                    <div class="col-6 col-xl-2 col-lg-3 col-md-4 px-2 px-sm-3 mb-3 mb-sm-5">
+                      <!-- Product -->
+                      <div class="card text-center h-100">
+                        <div class="position-relative w-100 h-100">
+                          <img class="card-img-top border-bottom h-100" src="{{ $item->product_images }}" alt="{{ $item->product_name }}" style="object-fit: cover">
+                        </div>
 
-                            <div class="col-12 d-flex justify-content-between">
-                              <button class="btn btn-label-secondary btn-prev"> <i class="ti ti-arrow-left me-sm-1 me-0"></i>
-                                <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                              </button>
-                              <button class="btn btn-primary btn-next"> <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0">Next</span> <i class="ti ti-arrow-right"></i></button>
+                        <div class="card-body pt-2 px-4 pb-0" style="min-height: 100px">
+                          <div class="mb-2 d-flex flex-column justify-content-between h-100">
+                            <a class="d-inline-block text-secondary small font-weight-medium mb-1" href="#">{{ $item->product_name }}</a>
+                            <div class="d-block font-size-1 mb-3">
+                              <span class="font-weight-medium">Rp {{number_format($item->product_price,2)}}</span>
                             </div>
                           </div>
                         </div>
-                  
-                        <div id="social-links" class="content">
-                          <div class="content-header mb-3">
-                            <div class="row">
-                              <div class="col">
-                                <h6 class="mb-0">Harga Emas (g)</h6>
-                                <small id="liveDate"></small>
-                              </div>
-                              <div class="col text-end">
-                                <h3 class="text-success fw-bold" id="livePrice">998.348</h3>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row g-3">
-                            <div class="col-md-12">
-                              <table class="table table-borderless w-100">
-                                <thead class="border-bottom">
-                                  <th>Nama Produk</th>
-                                  <th>Berat</th>
-                                  <th>Qty</th>
-                                  <th>Grand Total</th>
-                                </thead>
-                                <tbody id="cartTableBody">
-                                  <tr>
-                                    <th class="text-center" colspan="4">Loading...</th>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                            <div class="col-12 d-flex justify-content-between">
-                              <button class="btn btn-label-secondary btn-prev"> <i class="ti ti-arrow-left me-sm-1 me-0"></i>
-                                <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                              </button>
-                              <button class="btn btn-success btn-submit">Submit</button>
-                            </div>
-                          </div>
+
+                        
+                        <div id="detail-{{ $item->id }}" data-product-id="{{ $item->id }}" class="card-footer btn btn-outline-primary w-100 border-0 py-2 px-4 border-top text-center" data-bs-toggle="modal" data-bs-target="#basicModal{{ $item->id }}">
+                            Detail
                         </div>
-                      </form>
+                      </div>
+                      <!-- End Product -->
                     </div>
+                    <!-- End Products -->
+                    @endforeach
+                    <!-- Products -->                  
                   </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="position-fixed bottom-0 end-0 mb-4 me-4 d-none" id="cartArea">
+        <button type="button" class="btn btn-primary btn-lg" id="checkoutButton">
+            <i class="ti ti-shopping-cart"></i>&nbsp; Keranjang &nbsp;(<span id="cartCount">0</span>)
+        </button>
+    </div>
+    
+    @include('pages.transaction.product-modal')
+
+    <style>
+      #customOrderButton:hover .card {
+        background-color: rgba(115, 103, 240, 0.5);
+      }
+    </style>
+
     <script src="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.js') }}"></script>
     <script src="{{ asset('assets/js/extended-ui-sweetalert2.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
@@ -228,202 +124,64 @@
     <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="{{ asset('assets/js/pages-auth.js') }}"></script>
+
     <script>
-      const wizardNumbered = document.querySelector(".wizard-numbered");
-      let currentPage = 1;
-      let selectedProducts = [];
-      let livePriceGlobal = '';
-      let formProduct = [];
-
-      function getCartData(selectedProducts) {
-        $('#responseJson').val(JSON.stringify(livePriceGlobal));
-        $.ajax({
-          url: '{!! route('transaction-cart') !!}', // Replace with the URL of your API endpoint
-          method: 'GET', // Use the appropriate HTTP method for your API
-          data: {
-            payload: JSON.stringify(selectedProducts),
-            response: JSON.stringify(livePriceGlobal)
-          },
-          success: function(response) {
-            const cartTableBody = document.getElementById('cartTableBody');
-            // Clear existing rows
-            cartTableBody.innerHTML = '';
-
-            // Iterate through the data array and create table rows for each item
-            response.data.forEach(item => {
-              const newRow = document.createElement('tr');
-              const totalRounded = parseFloat(item.total_price).toFixed(2);
-              // Format the number based on the user's locale
-              const totalFormatted = parseFloat(totalRounded).toLocaleString();
-              newRow.innerHTML = `
-                <td>${item.product_name}</td>
-                <td>${item.product_weight}(${item.product_unit})</td>
-                <td>${item.qty}</td>
-                <td>Rp ${totalFormatted}</td>
-              `;
-              cartTableBody.appendChild(newRow);
-
-              // Push the object into the formProduct array using curly braces
-              formProduct.push({
-                productId: item.product_id,
-                qty: item.qty,
-                totalPrice: item.total_price,
-              });
-
-              console.log(formProduct);
-            });
-          },
-          error: function() {
-            // Handle the error, if any
-            console.log(error)
-          }
-        });
-      }
-
-      if (typeof wizardNumbered !== undefined && wizardNumbered !== null) {
-        const wizardNumberedBtnNextList = [].slice.call(wizardNumbered.querySelectorAll('.btn-next')),
-          wizardNumberedBtnPrevList = [].slice.call(wizardNumbered.querySelectorAll('.btn-prev')),
-          wizardNumberedBtnSubmit = wizardNumbered.querySelector('.btn-submit');
-
-        const numberedStepper = new Stepper(wizardNumbered, {
-          linear: false
-        });
-        if (wizardNumberedBtnNextList) {
-          wizardNumberedBtnNextList.forEach(wizardNumberedBtnNext => {
-            wizardNumberedBtnNext.addEventListener('click', event => {
-              currentPage++;
-              if(currentPage == 3) {
-                getCartData(selectedProducts);
-              }
-              console.log(currentPage);
-              numberedStepper.next();
-            });
-          });
-        }
-        if (wizardNumberedBtnPrevList) {
-          wizardNumberedBtnPrevList.forEach(wizardNumberedBtnPrev => {
-            wizardNumberedBtnPrev.addEventListener('click', event => {
-              currentPage--;
-              console.log(currentPage);
-              numberedStepper.previous();
-            });
-          });
-        }
-        if (wizardNumberedBtnSubmit) {
-          wizardNumberedBtnSubmit.addEventListener('click', event => {
-            Swal.fire({
-              title: 'Submit Belanja',
-              text: 'Apakah Anda yakin ingin mengirimkan formulir?',
-              icon: 'warning',
-              showCancelButton: true,
-              confirmButtonText: 'Ya, kirimkan!',
-              cancelButtonText: 'Batal',
-              reverseButtons: true
-            }).then((result) => {
-              if (result.isConfirmed) {
-                $.ajax({
-                  url: '{!! route('transaction-store') !!}',
-                  method: 'POST',
-                  headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                  },
-                  data: {
-                    buyerName: $('#buyerName').val(),
-                    buyerPhone: $('#buyerPhone').val(),
-                    buyerEmail: $('#buyerEmail').val(),
-                    buyerAddress: $('#buyerAddress').val(),
-                    responJson: livePriceGlobal,
-                    products: formProduct
-                  },
-                  success: function (response) {
-                    Swal.fire({
-                      title: 'Success!',
-                      text: 'Form submitted successfully!',
-                      icon: 'success',
-                      confirmButtonText: 'OK'
-                    }).then(function(){
-                      window.location.reload();
-                    });
-                  },
-                  error: function (error) {
-                    console.log(error);
-                    Swal.fire({
-                      title: 'Error!',
-                      text: 'Error submitting form. Please try again.',
-                      icon: 'error',
-                      confirmButtonText: 'OK'
-                    });
-                  }
-                });
-              } else if (result.dismiss === Swal.DismissReason.cancel) {
-                // User clicked "No," so do nothing
-              }
-            });
-          });
-        }
-      }
-
-      function updateLivePrice() {
-        $.ajax({
-          url: '{!! route('gold-price') !!}', // Replace with the URL of your API endpoint
-          method: 'GET', // Use the appropriate HTTP method for your API
-          success: function(response) {
-            // Update the live price in the #livePrice element
-            let price = response.data.items[0].xauPrice;
-            let timestamp = response.data.date;
-            let livePrice = price/31.103;
-
-            livePrice = livePrice.toFixed(2);
-
-            livePriceGlobal = response.data;
-
-            // Format the livePrice with commas for thousands
-            let formattedLivePrice = parseFloat(livePrice).toLocaleString();
-
-            $('#livePrice').text(formattedLivePrice)
-            $('#liveDate').text(timestamp);
-          },
-          error: function() {
-            // Handle the error, if any
-            $('#livePrice').text('Error fetching price');
-          }
-        });
-      }
-
-      $(document).ready(function() {
-        updateLivePrice();
-
-        $('.add-to-cart-btn').on('click', function() {
-
-          let productId = $(this).data('product-id');
-          let qty = parseInt($('#' + productId + '-qty').val());
-        
-          let productObj = {
-            product_id: productId,
-            qty: qty,
-          };
-        
-          selectedProducts.push(productObj);      
-          console.log(selectedProducts);
+      var selectedProductIds = []; // Array to store the selected product IDs
       
-          $(this).addClass('d-none');
-          $('.cancel-add-to-cart-btn[data-product-id="' + productId + '"]').removeClass('d-none');
-          $('#countCart').html(selectedProducts.length)
-          $('#' + productId + '-qty').attr('readonly', true);
+      function removeCart(id) {
+          var index = selectedProductIds.indexOf(id);
+          if (index !== -1) {
+              selectedProductIds.splice(index, 1); // Remove the product ID from the array
+              console.log(selectedProductIds); // Print the array for demonstration
+              var detailButton = document.getElementById('detail-' + id);
+
+              detailButton.classList.remove('btn-primary');
+              detailButton.classList.add('btn-outline-primary');
+              detailButton.textContent = 'Detail';
+              detailButton.setAttribute('data-bs-toggle', 'modal');
+              detailButton.setAttribute('data-bs-target', '#basicModal' + id);
+              detailButton.removeAttribute('onclick');
+              
+              document.getElementById('cartCount').textContent = selectedProductIds.length;
+              document.getElementById('cartArea').classList.add('d-none');
+          }
+
+          console.log(selectedProductIds);
+      }
+
+      $(function(){
+        // Click event handler for the "Beli" button
+        $('.buyButton').on('click', function() {
+          var productId = $(this).data('product-id');
+          if (!selectedProductIds.includes(productId)) {
+            selectedProductIds.push(productId);
+            console.log(selectedProductIds); // Print the array for demonstration
+          }
+
+          console.log(selectedProductIds.length); //why undefined ?
+          $('#cartCount').text(selectedProductIds.length);
+          var area = $('#cartArea');
+          
+          if(selectedProductIds.length > 0){
+            area.removeClass('d-none');
+          }
+
+          $('#detail-'+productId).removeClass('btn-outline-primary');
+          $('#detail-'+productId).addClass('btn-primary');
+          $('#detail-'+productId).text('Batal');
+          $('#detail-'+productId).removeAttr('data-bs-toggle');
+          $('#detail-'+productId).removeAttr('data-bs-target');
+          $('#detail-'+productId).attr('onclick', 'removeCart('+productId+')');
         });
-
-      
-        $('.cancel-add-to-cart-btn').on('click', function() {
         
-          let productId = $(this).data('product-id');
-
-          selectedProducts = selectedProducts.filter(product => product.product_id !== productId);      
-          console.log(selectedProducts);
-        
-          $(this).addClass('d-none');
-          $('.add-to-cart-btn[data-product-id="' + productId + '"]').removeClass('d-none');
-          $('#countCart').html(selectedProducts.length);
-          $('#' + productId + '-qty').removeAttr('readonly');
+        $('#checkoutButton').on('click', function() {
+            if (selectedProductIds.length > 0) {
+                // Assuming you have a route named "checkout" in Laravel, generate the URL using the route function
+                var checkoutUrl = '{{ route("checkout") }}';
+                checkoutUrl += '?product_ids=' + selectedProductIds.join(',');
+                // Redirect to the checkout page
+                window.location.href = checkoutUrl;
+            }
         });
       });
     </script>

@@ -2,9 +2,9 @@
     <div class="app-brand demo">
         <a href="/" class="app-brand-link">
             <span class="app-brand-logo demo">
-                <img src="https://icons.iconarchive.com/icons/cjdowner/cryptocurrency-flat/512/Ethereum-ETH-icon.png" alt="logo_image">
+                <img src="https://www.emas-nu.com/ibank-v2/img/logo_emas_nu_landscape.webp" alt="logo_image">
             </span>
-            <span class="app-brand-text demo menu-text fw-bolder" style="font-size: 17px!important;  font-family: 'Montserrat', sans-serif!important;">Gold Price</span>
+            <span class="app-brand-text demo menu-text fw-bolder" style="font-size: 17px!important;  font-family: 'Montserrat', sans-serif!important;">Tukang Emas</span>
         </a>
 
         <a href="javascript:void(0);" style="margin-left:85px!important" class="layout-menu-toggle menu-link text-large ms-auto">

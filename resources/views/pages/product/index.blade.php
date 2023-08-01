@@ -102,7 +102,6 @@ Produk
             if (file) {
                 var reader = new FileReader();
 
-                // Set up the FileReader to read the selected image file
                 reader.onload = function() {
                 var previewImg = $('#productImagePreview');
                 previewImg.attr('src', reader.result);
@@ -117,7 +116,6 @@ Produk
             if (file) {
                 var reader = new FileReader();
 
-                // Set up the FileReader to read the selected image file
                 reader.onload = function() {
                 var previewImg = $('#productImagePreviewAdd');
                 previewImg.attr('src', reader.result);

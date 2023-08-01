@@ -179,7 +179,6 @@ Transaksi
                     data: 'grand_total',
                     render: function(grand_total) {
                         const roundedGrandTotal = parseFloat(grand_total).toFixed(2);
-                        // Format the rounded grand total with commas for thousands
                         const formattedGrandTotal = parseFloat(roundedGrandTotal).toLocaleString();
                         return 'Rp '+formattedGrandTotal
                     }
@@ -217,10 +216,8 @@ Transaksi
                         $('#productWeight').text(response.data.product_weight+'('+response.data.product_unit+')');
                         
                         const roundedGrandTotal = parseFloat(response.data.grand_total).toFixed(2);
-                        // Format the rounded grand total with commas for thousands
                         const formattedGrandTotal = parseFloat(roundedGrandTotal).toLocaleString();
 
-                        // Update the grand total in the HTML element
                         $('#grandTotal').text('Rp '+formattedGrandTotal);
                         $('#grandTotal2').text('Rp '+formattedGrandTotal);
                     },
