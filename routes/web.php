@@ -18,8 +18,6 @@ use App\Http\Controllers\TransactionController;
 |
 */
 
-// Route::get('/', [TransactionController::class, 'add'])->name('guest');
-// Route::get('/checkout', [TransactionController::class, 'checkout'])->name('checkout');
 Route::get('/', [TransactionController::class, 'customOrder'])->name('custom-order');
 Route::get('/order-completed', [TransactionController::class, 'orderCompleted'])->name('order-completed');
 Route::post('transaction/store', [TransactionController::class, 'store'])->name('transaction-store');

@@ -17,7 +17,6 @@
     />
     <title>Not Authorized - E-Arsip Digital</title>
     <meta name="description" content="" />
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/e-ArsipDigital-Ori.svg') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

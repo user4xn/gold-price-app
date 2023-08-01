@@ -71,62 +71,104 @@ Transaksi
           </button>
         </div>
         <div class="modal-body">
-          <table>
-            <tr>
-                <td>Nama</td>
-                <td>&nbsp;:&nbsp;</td>
-                <td id="buyerName">-</td>
-            </tr>
-            <tr>
-                <td>Alamat</td>
-                <td>&nbsp;:&nbsp;</td>
-                <td id="buyerAddres">-</td>
-            </tr>
-            <tr>
-                <td>No Telepon</td>
-                <td>&nbsp;:&nbsp;</td>
-                <td id="buyerPhone">-</td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td>&nbsp;:&nbsp;</td>
-                <td id="buyerEmail">-</td>
-            </tr>
-          </table>
-          <hr class="mb-0">
-          <table class="w-100">
-            <thead class="mb-2">
-                <tr>
-                    <td>Nama</td>
-                    <td>Quantity</td>
-                    <td>Berat</td>
-                    <td>Harga /g</td>
-                    <td class="text-end">Total</td>
-                </tr>
-                <tr>
-                    <td colspan="5" class="mt-0">
-                        <hr class="mt-0">
-                    </td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td id="productName">Cincin</td>
-                    <td id="qty">2</td>
-                    <td id="productWeight">2g</td>
-                    <td id="perGram">23092</td>
-                    <td id="grandTotal" class="text-end">2132130</td>
-                </tr>
-            </tbody>
-          </table>
-          <hr>
-          <table class="w-100">
-            <tr>
-                <td></td>
-                <td></td>
-                <td id="grandTotal2" class="text-end">2132130</td>
-            </tr>
-          </table>
+            <div class="row mb-4">
+              <div class="col-md-12">
+                <table class="w-100">
+                  <tr>
+                    <td style="width:200px">Nama</td>
+                    <td style="width: 200px" class="text-start">&nbsp;:&nbsp;</td>
+                    <td id="checkNama" class="text-end">-</td>
+                  </tr>
+                  <tr>
+                    <td style="width:200px">Alamat</td>
+                    <td style="width: 200px" class="text-start">&nbsp;:&nbsp;</td>
+                    <td id="checkAlamat" class="text-end">-</td>
+                  </tr>
+                  <tr>
+                    <td style="width:200px">No Telepon</td>
+                    <td style="width: 200px" class="text-start">&nbsp;:&nbsp;</td>
+                    <td id="checkNoHp" class="text-end">-</td>
+                  </tr>
+                  <tr>
+                    <td style="width:200px">Email</td>
+                    <td style="width: 200px" class="text-start">&nbsp;:&nbsp;</td>
+                    <td id="checkEmail" class="text-end">-</td>
+                  </tr>
+                </table>
+                <hr class="mb-0">
+                <table class="w-100">
+                  <thead class="mb-2">
+                      <tr>
+                        <td>Jenis</td>
+                        <td>Kadar</td>
+                        <td>Berat</td>
+                        <td>Jumlah</td>
+                        <td>Ukuran</td>
+                        <td class="text-end">Total</td>
+                      </tr>
+                      <tr>
+                          <td colspan="6" class="mt-0">
+                              <hr class="mt-0">
+                          </td>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                        <td id="checkJenis">-</td>
+                        <td id="checkKadar">-</td>
+                        <td id="checkBerat">-</td>
+                        <td id="checkJumlah">-</td>
+                        <td id="checkUkuran">-</td>
+                        <td id="checkTotal" class="text-end">-</td>
+                      </tr>
+                  </tbody>
+                </table>
+                <hr>
+                Keterangan Tambahan : <br><br>
+                <table class="w-100">
+                  <tr>
+                    <td style="width: 160px">Jenis Batu</td>
+                    <td style="width: 200px" id="checkJenisBatu">-</td>
+                    <td class="text-end" id="checkPriceJenisBatu"> - </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 160px">Berat Batu (Carat)</td>
+                    <td style="width: 200px" id="checkBeratBatu">-</td>
+                    <td class="text-end" id="checkPriceBeratBatu"> - </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 160px">Grafir Nama</td>
+                    <td style="width: 200px" id="checkGrafirNama">-</td>
+                    <td class="text-end" id="checkPriceGrafirNama"> - </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 160px">Finishing Warna</td>
+                    <td style="width: 200px" id="checkFinishingWarna">-</td>
+                    <td class="text-end" id="checkPriceFinishingWarna"> - </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 160px">Biaya Ongkos</td>
+                    <td style="width: 200px" id="checkBiayaOngkos">-</td>
+                    <td class="text-end" id="checkPriceBiayaOngkos"> - </td>
+                  </tr>
+                </table>
+                <hr>
+                <table class="w-100">
+                  <tr>
+                    <td class="text-start">Grand Total</td>
+                    <td></td>
+                    <td id="grandTotal" class="text-end">-</td>
+                  </tr>
+                  <tr>
+                    <td class="text-start">Pembayaran</td>
+                    <td></td>
+                    <td id="payment" class="text-end">-</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <span>Contoh Gambar :</span>
+            <img id="checkImage" src="https://static.vecteezy.com/system/resources/previews/004/141/669/original/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg" alt="Contoh Gambar" class="rounded border mt-3" style="width:100%; cursor: pointer; object-fit: cover">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -173,7 +215,7 @@ Transaksi
             columns: [
                 { data: 'transaction_date' },
                 { data: 'buyer_name' },
-                { data: 'product_name' },
+                { data: 'product_type' },
                 { data: 'qty' },
                 { 
                     data: 'grand_total',
@@ -209,17 +251,28 @@ Transaksi
                         $('#buyerAddress').text(response.data.buyer_address);
                         $('#buyerPhone').text(response.data.buyer_phone);
                         $('#buyerEmail').text(response.data.buyer_email);
-                        
-                        $('#productName').text(response.data.product_name);
-                        $('#qty').text(response.data.qty);
-                        $('#perGram').text('Rp '+parseFloat(response.data.gold_price).toLocaleString());
-                        $('#productWeight').text(response.data.product_weight+'('+response.data.product_unit+')');
-                        
-                        const roundedGrandTotal = parseFloat(response.data.grand_total).toFixed(2);
-                        const formattedGrandTotal = parseFloat(roundedGrandTotal).toLocaleString();
+                       
+                        $('#checkNama').text(response.data.buyer_name);
+                        $('#checkNoHp').text(response.data.buyer_phone);
+                        $('#checkEmail').text(response.data.buyer_email);
+                        $('#checkAlamat').text(response.data.buyer_address);
 
-                        $('#grandTotal').text('Rp '+formattedGrandTotal);
-                        $('#grandTotal2').text('Rp '+formattedGrandTotal);
+
+                        $('#checkPriceBiayaOngkos').text("Rp "+parseFloat(response.data.qty*800000.00).toLocaleString());
+                        $('#checkTotal').text("Rp "+parseFloat(response.data.grand_total-(response.data.qty*800000.00)).toLocaleString());
+                        $('#grandTotal').text("Rp "+parseFloat(response.data.grand_total).toLocaleString());
+                        
+                        $('#checkJenis').text(response.data.product_type);
+                        $('#checkKadar').text(response.data.gold_rate);
+                        $('#checkBerat').text(response.data.product_weight);
+                        $('#checkJumlah').text(response.data.qty);
+                        $('#checkUkuran').text(response.data.ring_size);
+                        $('#checkJenisBatu').text(response.data.stone_type);
+                        $('#checkBeratBatu').text(response.data.stone_weight);
+                        $('#checkGrafirNama').text(response.data.name_graph);
+                        $('#checkFinishingWarna').text(response.data.finishing_color);
+                        $('#payment').text(response.data.payment);
+                        $('#checkImage').attr('src', response.data.example_images);
                     },
                     400:function(response){
                         Swal.fire({

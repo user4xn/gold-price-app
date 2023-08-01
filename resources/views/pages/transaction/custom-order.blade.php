@@ -28,6 +28,16 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.css') }}" />
 </head>
 
+<style>
+  .swal2-deny{
+    display: none !important;
+  }
+
+  .swal2-cancel{
+    display: none !important;
+  }
+</style>
+
 <body>
     <div class="authentication-wrapper authentication-cover authentication-bg">
         <div class="authentication-inner row m-0">
@@ -92,7 +102,7 @@
                       
                       <div class="row">
                         <div class="col-md-4 col-sm-6 mb-2">
-                          <label for="jenis">Jenis</label>
+                          <label for="jenis">Jenis*</label>
                           <select name="jenis" id="jenis" class="form-control">
                             <option value="">Pilih Jenis</option>
                             <option value="Cincin Kawin">Cincin Kawin</option>
@@ -107,7 +117,7 @@
                         </div>
 
                         <div class="col-md-4 col-sm-6 mb-2">
-                          <label for="kadar">Kadar</label>
+                          <label for="kadar">Kadar*</label>
                           <select name="kadar" id="kadar" class="form-control">
                             <option value="">Pilih Kadar</option>
                             @foreach ($gold_rate as $rate)
@@ -117,17 +127,17 @@
                         </div>
 
                         <div class="col-md-4 col-sm-6 mb-2">
-                          <label for="berat">Berat (Gram)</label>
+                          <label for="berat">Berat (Gram)*</label>
                           <input type="number" class="form-control" name="berat" id="berat" placeholder="Masukan Berat..." min="1" max="100">
                         </div>
 
                         <div class="col-md-4 col-sm-6 mb-2">
-                          <label for="jumlah">Jumlah (Pcs)</label>
+                          <label for="jumlah">Jumlah (Pcs)*</label>
                           <input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Masukan Jumlah...">
                         </div>
                       </div>
 
-                      <h5 class="mt-5">Keterangan Lainnya</h5>
+                      <h5 class="mt-5">Keterangan Lainnya (Opsional)</h5>
 
                       <div class="row">
                         <div class="col-md-4 col-sm-6 mb-2">
@@ -146,7 +156,7 @@
                         </div>
 
                         <div class="col-md-4 col-sm-6 mb-2">
-                          <label for="grafirNama">Grafir Nama (Opsional)</label>
+                          <label for="grafirNama">Grafir Nama</label>
                           <input type="text" class="form-control" name="grafirNama" id="grafirNama" placeholder="Masukan Grafir Nama...">
                         </div>
 
@@ -178,22 +188,22 @@
                       
                       <div class="row">
                         <div class="col-md-12 mb-2">
-                          <label for="nama">Nama</label>
+                          <label for="nama">Nama*</label>
                           <input type="text" class="form-control" name="nama" id="nama" placeholder="Masukan Nama...">
                         </div>
 
                         <div class="col-md-6 mb-2">
-                          <label for="email">Email</label>
+                          <label for="email">Email*</label>
                           <input type="email" class="form-control" name="email" id="email" placeholder="Masukan Email...">
                         </div>
 
                         <div class="col-md-6 mb-2">
-                          <label for="noHp">No Whatsapp</label>
+                          <label for="noHp">No Whatsapp*</label>
                           <input type="number" class="form-control" name="noHp" id="noHp" placeholder="Masukan No Whatsapp...">
                         </div>
 
                         <div class="col-md-12 mb-2">
-                          <label for="alamat">Alamat</label>
+                          <label for="alamat">Alamat*</label>
                           <textarea class="form-control" name="alamat" id="alamat" cols="30" rows="10" placeholder="Masukan Alamat..."></textarea>
                         </div>
                       </div>
@@ -201,14 +211,13 @@
 
                     <div id="form-checkout" class="d-none">
                       <h5 class="">Konfirmasi Hitung</h5>
-                      
                       <div class="row">
                         <div class="col">
                           <h6 class="mb-0">Harga Emas Hari Ini (g)</h6>
                           <small id="liveDate"></small>
                         </div>
                         <div class="col text-end">
-                          <h3 class="text-success fw-bold" id="livePrice">998.348</h3>
+                          <h3 class="text-primary fw-bold" id="livePrice">998.348</h3>
                         </div>
                       </div>
                       <br>
@@ -228,7 +237,7 @@
                               <td id="checkNama" class="text-end">-</td>
                             </tr>
                             <tr>
-                              <td style="2"width:0px">Alamat</td>
+                              <td style="width:200px">Alamat</td>
                               <td class="w-50 text-start">&nbsp;:&nbsp;</td>
                               <td id="checkAlamat" class="text-end">-</td>
                             </tr>
@@ -238,7 +247,7 @@
                               <td id="checkNoHp" class="text-end">-</td>
                             </tr>
                             <tr>
-                              <td style=""width:00px">Email</td>
+                              <td style="width:200px">Email</td>
                               <td class="w-50 text-start">&nbsp;:&nbsp;</td>
                               <td id="checkEmail" class="text-end">-</td>
                             </tr>
@@ -314,7 +323,7 @@
                             <div class="col-md mb-md-0 mb-2">
                               <div class="form-check custom-option custom-option-basic checked">
                                 <label class="form-check-label custom-option-content" for="customRadioAddress1">
-                                  <input name="pembayaran" class="form-check-input" type="radio" value="" id="customRadioAddress1" checked="">
+                                  <input name="pembayaran" class="form-check-input" type="radio" value="Saldo EmasNu" id="customRadioAddress1" checked="">
                                   <span class="custom-option-header">
                                     <span class="fw-medium mb-0">Saldo EmasNu</span>
                                   </span>
@@ -324,7 +333,7 @@
                             <div class="col-md">
                               <div class="form-check custom-option custom-option-basic">
                                 <label class="form-check-label custom-option-content" for="customRadioAddress2">
-                                  <input name="pembayaran" class="form-check-input" type="radio" value="" id="customRadioAddress2">
+                                  <input name="pembayaran" class="form-check-input" type="radio" value="Cash" id="customRadioAddress2">
                                   <span class="custom-option-header">
                                     <span class="fw-medium mb-0">Cash</span>
                                   </span>
@@ -507,7 +516,6 @@
               let jumlah = $('#jumlah').val();
               let kadar = parseFloat($('#kadar').val()) + 0.05;
               let admin = 800000.00;
-              console.log(kadar);
 
               let total = (berat * livePriceGlobal.toFixed(2));
               
@@ -535,7 +543,29 @@
             $('#step'+(pos)).removeClass('active');
             $('#step'+(pos+1)).addClass('active');
           } else if(pos == (form.length - 1)) {
-            $('#customOrderForm').submit();
+
+            if(
+              $('#nama').val() == '' ||
+              $('#noHp').val() == '' ||
+              $('#email').val() == '' ||
+              $('#alamat').val() == '' ||
+              $('#jenis').val() == '' ||
+              $('#berat').val() == '' ||
+              $('#kadar').val() == '' ||
+              $('#jumlah').val() == ''
+            ) {
+              Swal.fire({
+                icon: 'warning',
+                title: 'Check Ulang',
+                text: 'Isi field yang wajib! (*)',
+                showDenyButton: false,
+                showCancelButton: false,
+              })
+
+            } else {
+              $('#customOrderForm').submit();
+            }
+
           }
         });
 

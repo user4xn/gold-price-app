@@ -33,9 +33,8 @@
         <div class="authentication-inner row m-0">
             <div class="d-flex col-12 col-lg-12 justify-content-center flex-row align-items-center mt-5">
               <span>
-                <img style="height: 50px; width:50px" src="https://www.emas-nu.com/ibank-v2/img/logo_emas_nu_landscape.webp" alt="logo_image">
+                <img style="height: 50px;" src="https://www.emas-nu.com/ibank-v2/img/logo_emas_nu_landscape.webp" alt="logo_image">
               </span>
-              <span class="app-brand-text demo menu-text fw-bolder" style="font-size: 17px!important;  font-family: 'Montserrat', sans-serif!important;">Tukang Emas</span>
             </div>
             <div class="my-5 d-block d-md-none"></div>
             <div class="my-5 d-block d-md-none"></div>
@@ -73,12 +72,10 @@
       $(function(){
         function redirectAfterDelay() {
             setTimeout(function() {
-                // Replace 'target-page-url' with the actual URL where you want to redirect the user
-                window.location.href = "{{ route('guest') }}";
-            }, 2000); // 3 seconds in milliseconds
+                window.location.href = "{{ route('custom-order') }}";
+            }, 2000); 
         }
-
-        // Call the redirect function when the page is ready
+        
         redirectAfterDelay();
       })
     </script>

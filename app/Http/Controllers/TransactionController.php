@@ -62,56 +62,29 @@ class TransactionController extends Controller
             $trc->buyer_name = $request->nama;
             $trc->save();
             
-            if($request->products != null) {
-                foreach ($request->product_id as $item){
-                    $fpc = Product::where('id', $item->id)->first();
+            $url_image = '';
 
-                    $detail = new TransactionDetail(); 
-                    $detail->transaction_id = $trc->id;
-                    $detail->product_id = $item->id;
-                    $detail->is_custom = 0;
-                    $detail->qty = $item->qty;
-                    $detail->product_name = $fpc->product_name;
-                    $detail->example_images = $fpc->product_images;
-                    $detail->product_unit = $fpc->product_unit;
-                    $detail->product_weight = $fpc->product_weight;
-                    $detail->product_category = $fpc->product_category;
-                    $detail->product_type = $fpc->product_type;
-                    $detail->gold_rate = $fpc->gold_rate;
-                    $detail->stone_type = $fpc->stone_type;
-                    $detail->stone_weight = $fpc->stone_weight;
-                    $detail->ring_size = $fpc->ring_size;
-                    $detail->name_graph = null;
-                    $detail->finishing_color = null;
-                    $detail->save();
-                }
-            } else {
-                $url_image = '';
-
-                if ($request->hasFile('contohGambar')) {
-                    $imagePath = $request->file('contohGambar')->store('product_images', 'public');
-                    $url_image = asset('storage/'.$imagePath);
-                }
-
-                $detail = new TransactionDetail();
-                $detail->transaction_id = $trc->id; 
-                $detail->product_id = null;
-                $detail->is_custom = 1;
-                $detail->qty = $request->jumlah;
-                $detail->product_name = null;
-                $detail->example_images = $url_image;
-                $detail->product_unit = 'g';
-                $detail->product_weight = $request->berat;
-                $detail->product_category = null;
-                $detail->product_type = $request->jenis;
-                $detail->gold_rate = $request->kadar;
-                $detail->stone_type = $request->jenisBatu;
-                $detail->stone_weight = $request->beratBatu;
-                $detail->ring_size = $request->ukuran;
-                $detail->name_graph = $request->grafirNama;
-                $detail->finishing_color = $request->finishingWarna;
-                $detail->save();
+            if ($request->hasFile('contohGambar')) {
+                $imagePath = $request->file('contohGambar')->store('product_images', 'public');
+                $url_image = asset('storage/'.$imagePath);
             }
+
+            $fetchRate = GoldRate::where('rate', $request->kadar)->first();
+
+            $detail = new TransactionDetail();
+            $detail->transaction_id = $trc->id; 
+            $detail->qty = $request->jumlah;
+            $detail->example_images = $url_image;
+            $detail->product_weight = $request->berat;
+            $detail->product_type = $request->jenis;
+            $detail->gold_rate = $fetchRate->carat;
+            $detail->stone_type = $request->jenisBatu;
+            $detail->stone_weight = $request->beratBatu;
+            $detail->ring_size = $request->ukuran;
+            $detail->name_graph = $request->grafirNama;
+            $detail->finishing_color = $request->finishingWarna;
+            $detail->payment = $request->pembayaran;
+            $detail->save();
 
             DB::commit();
             return redirect()->route('order-completed');
@@ -124,8 +97,8 @@ class TransactionController extends Controller
 
     public function datatable()
     {
-        $product = Transaction::join('products', 'products.id', '=', 'transactions.product_id')
-            ->select('transactions.*', 'product_name', 'product_weight', 'product_unit')
+        $product = Transaction::join('transaction_details', 'transactions.id', '=', 'transaction_details.transaction_id')
+            ->select('transactions.*', 'product_type', 'qty')
             ->get();
             
         return DataTables::of($product)
@@ -143,8 +116,7 @@ class TransactionController extends Controller
     {
         try {
             $res = Transaction::where('transactions.id', $id)
-                ->join('products', 'products.id', '=', 'transactions.product_id')
-                ->select('transactions.*', 'product_name', 'product_weight', 'product_unit')
+                ->join('transaction_details', 'transactions.id', '=', 'transaction_details.transaction_id')
                 ->first();
 
             return response()->json([
