@@ -66,7 +66,7 @@ Transaksi
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Detail Pembelian</h5> <span class="text-muted" id="transactionDate"> 23-23-2023</span>
+          <h5 class="modal-title" id="exampleModalLabel">Detail Pembelian</h5> <span class="text-muted" id="transactionDate">-</span>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
           </button>
         </div>
@@ -263,6 +263,7 @@ Transaksi
                         $('#grandTotal').text("Rp "+parseFloat(response.data.grand_total).toLocaleString());
                         
                         $('#checkJenis').text(response.data.product_type);
+                        $('#transactionDate').text(response.data.transaction_date);
                         $('#checkKadar').text(response.data.gold_rate);
                         $('#checkBerat').text(response.data.product_weight);
                         $('#checkJumlah').text(response.data.qty);
@@ -272,7 +273,9 @@ Transaksi
                         $('#checkGrafirNama').text(response.data.name_graph);
                         $('#checkFinishingWarna').text(response.data.finishing_color);
                         $('#payment').text(response.data.payment);
-                        $('#checkImage').attr('src', response.data.example_images);
+                        if(response.data.example_images != ''){
+                          $('#checkImage').attr('src', response.data.example_images);
+                        }
                     },
                     400:function(response){
                         Swal.fire({
