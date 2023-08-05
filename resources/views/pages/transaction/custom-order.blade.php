@@ -10,6 +10,7 @@
 
     <title>Custom Order - Guest</title>
     
+    <link rel="icon" href="https://www.emas-nu.com/ibank-v2/img/favicon.png" type="image/png" sizes="16x16">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
@@ -356,10 +357,10 @@
                     <div class="alert bg-primary mt-5 text-white py-4">
                       <ul class="m-0">
                         <li>Kami Akan memberikan penawaran setelah 1 x 24 jam dari pengajuan formulir ini kami terima</li>
-                        <li>Penawaran akan kami kirimkan melalui WA dan bisa langsung berdiskusi dengan team tukang emas</li>			
+                        <li>Penawaran akan kami kirimkan melalui WA dan bisa langsung berdiskusi dengan team EmasNU</li>			
                         <li>Penawaran Berlaku 1 x 24 jam bila lewat dari waktu tsb maka anda wajib mengisi form custom emas kembali</li>
                         <li>Pembayaran dibayarkan full 100% setelah desain dan harga disepakati</li>
-                        <li>Waktu pembuatan akan di konfirmasi oleh team tukang emas</li>
+                        <li>Waktu pembuatan akan di konfirmasi oleh team EmasNU</li>
                       </ul>
                     </div>
 
@@ -416,6 +417,7 @@
       let livePriceGlobal;
 
       let goldRate = {!! json_encode($gold_rate) !!};
+      let customValue = {!! json_encode($custom_value) !!};
       
       function updateLivePrice() {
         $.ajax({
@@ -427,10 +429,11 @@
             let timestamp = response.data.date;
             let livePrice = price/31.103;
             
-            livePriceGlobal = livePrice; 
+            livePriceGlobal = livePrice + customValue.value; 
+            
             dataPriceGlobal = response.data;
             
-            livePrice = livePrice.toFixed(2);
+            livePrice = livePriceGlobal.toFixed(2);
             
             let formattedLivePrice = parseFloat(livePrice).toLocaleString();
 
@@ -448,20 +451,43 @@
         updateLivePrice();
 
         $('#contohGambar').on('change', function(e) {
-            var file = e.target.files[0];
-            if (file) {
-                var reader = new FileReader();
+          var file = e.target.files[0];
+          if (file) {
+              // Validate file extension
+              var allowedExtensions = ['jpg', 'jpeg', 'png'];
+              var fileExtension = file.name.split('.').pop().toLowerCase();
+              if (allowedExtensions.indexOf(fileExtension) === -1) {
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'Ekstensi File Tidak Valid',
+                      text: 'Harap gunakan file gambar yang valid (.jpg or .png).'
+                  });
+                  return;
+              }
 
-                reader.onload = function() {
-                var previewImg = $('#checkImage');
-                var previewImgModal = $('#checkImagePreview');
-                previewImg.attr('src', reader.result);
-                previewImgModal.attr('src', reader.result);
-                };
+              // Validate file size (max 2MB)
+              var maxSize = 2 * 1024 * 1024; // 2MB in bytes
+              if (file.size > maxSize) {
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'File Terlalu Besar',
+                      text: 'Maksimal ukuran gambar adalah 2MB.'
+                  });
+                  return;
+              }
 
-                // Read the image file as a data URL
-                reader.readAsDataURL(file);
-            }
+              var reader = new FileReader();
+
+              reader.onload = function() {
+                  var previewImg = $('#checkImage');
+                  var previewImgModal = $('#checkImagePreview');
+                  previewImg.attr('src', reader.result);
+                  previewImgModal.attr('src', reader.result);
+              };
+
+              // Read the image file as a data URL
+              reader.readAsDataURL(file);
+          }
         });
 
         $('#btnPrev').on('click', function() {
@@ -483,6 +509,30 @@
 
         $('#btnNext').on('click', function() {
           if(pos < (form.length - 1)) {
+
+            if(pos == (form.length - 2)) {
+              if(
+                $('#nama').val() == '' ||
+                $('#noHp').val() == '' ||
+                $('#email').val() == '' ||
+                $('#alamat').val() == '' ||
+                $('#jenis').val() == '' ||
+                $('#berat').val() == '' ||
+                $('#kadar').val() == '' ||
+                $('#jumlah').val() == ''
+              ) {
+                Swal.fire({
+                  icon: 'warning',
+                  title: 'Check Ulang',
+                  text: 'Isi field yang wajib! (*)',
+                  showDenyButton: false,
+                  showCancelButton: false,
+                })
+
+                return false;
+              }
+            }
+            
             $('#'+form[pos]).addClass('d-none');
             $('#'+form[pos+1]).removeClass('d-none');
             pos = pos+1;
@@ -543,29 +593,7 @@
             $('#step'+(pos)).removeClass('active');
             $('#step'+(pos+1)).addClass('active');
           } else if(pos == (form.length - 1)) {
-
-            if(
-              $('#nama').val() == '' ||
-              $('#noHp').val() == '' ||
-              $('#email').val() == '' ||
-              $('#alamat').val() == '' ||
-              $('#jenis').val() == '' ||
-              $('#berat').val() == '' ||
-              $('#kadar').val() == '' ||
-              $('#jumlah').val() == ''
-            ) {
-              Swal.fire({
-                icon: 'warning',
-                title: 'Check Ulang',
-                text: 'Isi field yang wajib! (*)',
-                showDenyButton: false,
-                showCancelButton: false,
-              })
-
-            } else {
               $('#customOrderForm').submit();
-            }
-
           }
         });
 

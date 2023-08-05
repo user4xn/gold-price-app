@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
     <title>@yield('title')</title>
-
+    
+    <link rel="icon" href="https://www.emas-nu.com/ibank-v2/img/favicon.png" type="image/png" sizes="16x16">
     <meta name="description" content="" />
     @include('layouts.template.style')
 </head>

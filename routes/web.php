@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TransactionController;
 
 /*
@@ -46,6 +47,10 @@ Route::middleware(['single.session'])->group(function() {
         Route::get('/', [TransactionController::class, 'index'])->name('transaction');
         Route::get('/datatable', [TransactionController::class, 'datatable'])->name('transaction-datatable');
         Route::get('/detail/{id}', [TransactionController::class, 'detail'])->name('transaction-detail');
+    });
+
+    Route::prefix('setting')->middleware(['auth'])->group(function () { 
+        Route::post('/update-margin', [SettingController::class, 'update'])->name('setting-update-margin');
     });
     
     Route::prefix('user')->middleware(['auth'])->group(function () { 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Transaction;
 use App\Models\GoldRate;
+use App\Models\CustomValue;
 use App\Models\TransactionDetail;
 use DB;
 use Alert;
@@ -13,29 +14,11 @@ use DataTables;
 
 class TransactionController extends Controller
 {
-    public function add(Request $request)
-    {
-        $search = $request->search;
-
-        $product = Product::when($search, function ($query) use ($search){
-                return $query->where('product_name', 'LIKE', '%'.$search.'%');
-            })->get();
-        
-        return view('pages.transaction.guest', compact('product','search'));
-    }
-
-    public function checkout(Request $request)
-    {
-        $ids = $request->product_ids;
-        $product = Product::whereIn('id', explode(',', $ids))->get();
-
-        return view('pages.transaction.checkout', compact('product'));
-    }
-
     public function customOrder(Request $request)
     {
         $gold_rate = GoldRate::all();
-        return view('pages.transaction.custom-order', compact('gold_rate'));
+        $custom_value = CustomValue::where('key','additional_price')->first();
+        return view('pages.transaction.custom-order', compact('gold_rate', 'custom_value'));
     }
 
     public function orderCompleted(Request $request)
